@@ -1,0 +1,188 @@
+definitions:
+  models.City:
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+    type: object
+  models.Client:
+    properties:
+      _id:
+        type: string
+      cityId:
+        type: string
+      dni:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      phone:
+        type: string
+    type: object
+  models.ResponseError:
+    properties:
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/cities:
+    get:
+      consumes:
+      - application/json
+      description: GetAttentionsNoEmo
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.City'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      summary: CITY01 GetCities
+      tags:
+      - Cities
+  /api/clients:
+    get:
+      consumes:
+      - application/json
+      description: GetClients
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Client'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      summary: CLIENT02 GetClients
+      tags:
+      - Clients
+    post:
+      consumes:
+      - application/json
+      description: CreateClient
+      parameters:
+      - description: New Client
+        in: body
+        name: client
+        required: true
+        schema:
+          $ref: '#/definitions/models.Client'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Client'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      summary: CLIENT01 CreateClient
+      tags:
+      - Clients
+  /api/clients/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: DeleteClientById
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Client'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      summary: CLIENT04 DeleteClientById
+      tags:
+      - Clients
+    get:
+      consumes:
+      - application/json
+      description: GetClientById
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Client'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      summary: CLIENT05 GetClientById
+      tags:
+      - Clients
+    put:
+      consumes:
+      - application/json
+      description: UpdateClient
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: New Client
+        in: body
+        name: client
+        required: true
+        schema:
+          $ref: '#/definitions/models.Client'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Client'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ResponseError'
+      summary: CLIENT03 UpdateClient
+      tags:
+      - Clients
+swagger: "2.0"
