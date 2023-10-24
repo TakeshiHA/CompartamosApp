@@ -1,5 +1,6 @@
 # CompartamosApp
 Prueba de Full Stack Repositorio de Back End hecho con Go usando la libreria de mongodb, swagger y echo
+El proyecto se desarrollo con el arquitectura de clean architecture en mente donde separamos entidades (models), usecase, controllers, repository y database
 
 # Swagger
 Link de swagger para probar los Web services:
